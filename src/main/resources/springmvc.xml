@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd"
+        default-autowire="byName">
+
+    <context:component-scan base-package="com.accp.controller,com.accp.biz"/>
+
+    <!--放过静态文件 ，而且我们默认是Jsp解析器，其他不行，然后就用这个url路劲映射到对应的静态资源文件-->
+   <mvc:resources mapping="/bootstrap-3.3.7-dist/**" location="/WEB-INF/static/bootstrap-3.3.7-dist/"/>
+    <mvc:resources mapping="/css/**" location="/WEB-INF/static/css/"/>
+    <mvc:resources mapping="/img/**" location="/WEB-INF/static/img/"/>
+    <mvc:resources mapping="/js/**" location="/WEB-INF/static/js/"/>
+
+    <!-- 视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!--文件上传的配置-->
+    <!--&lt;!&ndash;一定要有个id，否则报错&ndash;&gt;
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="5000000"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>-->
+
+    <!--配置json的格式转换输出和字符类型-->    <!--注意！！！这里的 mvc:annotation-driven 只能有一个，不然不能返回集合到ajax里了-->
+    <mvc:annotation-driven conversion-service="conversionService">
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="utf-8"/>
+            </bean>
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!--格式转换器，，将spring默认的时间格式类型转换为yyyy-MM-dd   想转换那种属性格式就自己配置-->
+    <bean name="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.accp.controller.DataConverter" p:dataPatter="yyyy-MM-dd"/>
+            </set>
+        </property>
+    </bean>
+
+    <!-- 全局异常配置   然后error页面里用  ${exception.message} 来显示错误信息，局部异常时e-->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.Exception">error</prop> <!-- 映射的页面的逻辑视图名-->
+            </props>
+        </property>
+    </bean>
+
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/sys/*"/>
+            <bean class="com.accp.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+</beans>

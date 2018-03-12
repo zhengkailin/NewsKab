@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.NewsDao">
+     <resultMap id="newsMap" type="News">
+         <result column="id" property="id"></result>
+         <result column="title" property="title"></result>
+         <result column="visitorCount" property="visitorCount"></result>
+         <result column="content" property="content"></result>
+         <result column="isRecommend" property="isRecommend"></result>
+         <result column="createByName" property="createByName"></result>
+         <result column="creationDate" property="creationDate"></result>
+         <result column="editor" property="editor"></result>
+           <collection property="commentList" ofType="Comment">
+                <id property="id" column="id"/>
+               <result column="content" property="content"></result>
+               <result column="createtime" property="createtime"></result>
+               <result column="nickname" property="nickname"></result>
+           </collection>
+     </resultMap>
+
+
+    <select id="countNews" resultType="News">
+        select * from kab_news
+    </select>
+    <select id="querynewsById" resultMap="newsMap">
+        select * from kab_news as n JOIN kab_comment as c on n.id=c.newsId where n.id =#{id}
+    </select>
+    <select id="listpage"  resultType="News">
+        select * from kab_news
+       LIMIT #{currentPageNo},#{rowCount}
+    </select>
+    <update id="modifyNews">
+        update kab_news  set visitorCount=visitorCount+1 where id=#{id}
+    </update>
+
+
+</mapper>

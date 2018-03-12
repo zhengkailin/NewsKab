@@ -1,0 +1,108 @@
+#myCarousel img{ width: 100%;}
+
+.show-slidehide{ display: none;}
+
+.survey h3 img{ padding-right: 10px;}
+.survey p{ text-indent:2em;}
+.survey a{ color: #FF1C1E;}
+
+
+.relative,.relative2{ height: 320px; border-top: 2px solid #5BAF32; border-bottom: 3px solid #5BAF32; padding: 18px 0;}
+.relative strong{ font-size: 24px; color: #255625;}
+.relative{ position: relative;}
+.relative-a{ position: absolute; right: 1px; bottom: 1px;}
+.nokey ul li{ width: 100%; padding: 12px 0;}
+.lontit a:hover{ color: #5BAF32;}
+.Selected{ color: #5BAF32;}
+
+#log{ width: 360px; height: 380px; background: #fff; border: 1px solid #D0D0D0; margin-top: 48px;}
+#log input{ width: 320px; display: inline; margin: 8px 0;}
+#log .security-code{ width: 136px;}
+#log p{ line-height: 98px;}
+
+#log h3{ text-align: center;}
+
+#register{ background: url("../img/register.gif")  no-repeat right bottom #fafafa; }
+#register h3{ margin-bottom: 28px; line-height: 28px;}
+#register input{ width: 442px; margin:1px 0  0 18px; display: inline;}
+#register .security-code{ width: 240px;}
+#register a{ text-decoration: none; font-size: 13px; color: #656565; }
+#register a:hover{ text-decoration: none;}
+#register .log-register{ margin: 76px 0; height: 290px; border: 1px solid #A4A4A4; text-align: center; padding: 50px 0;}
+#register .log-register a{ color: #5BAF32;}
+
+#retrieve p{ font-size: 12px; color: #5BAF32; line-height: 58px;}
+.msg-d input{ width: 120px; margin: 15px 126px;}
+
+.headinfo .banner{ position: relative;}
+.headinfo img{ width: 100%;}
+.headinfo h3{ position:absolute; height:78px; line-height:78px; width:220px; background:#71b353; z-index:1; right:0px; top:88px; text-align:center; color:#fff; }
+.locaiton{ padding-left:30px; height:30px; line-height:30px; background-color:#ebebeb; font-size:14px; color: #5BAF32;}
+.locaiton a{margin:0 5px;}
+
+.mianinfo h3{ text-align: center;}
+.mianinfo p{ font-size: 20px;}
+.mianinfo span{ text-indent:2em; display: block; margin: 20px 0;}
+.mianinfo ul { margin-top: 28px; padding: 0 38px;}
+.mianinfo ul li{ width: 100%; padding: 15px 0;}
+.mianinfo ul li span{ display: inherit; margin: 0;}
+
+
+.menuTop{ height:35px; background:url("../img/leftMenuBg.gif") no-repeat; position:relative; z-index:1; padding-left: 20px; font-size: 15px; font-weight: 800; color: #fff; line-height: 36px;}
+
+.leftMenu ul{margin:10px;overflow:hidden;width:200px; }
+.leftMenu ul li{ margin: -16px -36px;}
+.leftMenu ul li a{display:block;width:175px;height:32px;line-height:32px;padding-left:10px;font-size:14px;}
+.leftMenu ul li a.on{background:#e6e6e6;color:#4e9e00;}
+.leftMenu{ width: 200px; border: 1px solid #e6e6e6;}
+.m-leftmenv,.leftMenu { margin-top: 50px;}
+.m-leftmenv p{ font-size: 14px; }
+.m-leftmenv p img { padding-right: 5px;}
+.m-leftmenv ul{ margin-top: -10px;}
+.m-leftmenv ul li{ line-height:10px; display:block; padding-left:-26px;}
+
+.clear{ margin: 280px 0;}
+.green{color: #5BAF32;}
+.no:hover{ text-decoration: none;}
+
+.formbox div{ margin: 8px 0; font-size: 14px; font-weight: normal;}
+.formbox ul { margin-top: -20px;}
+.formbox ul li{ padding: 5px 0; margin-left: -36px;}
+.item select{ width: 202px; display: inline; margin: 0 12px;}
+.msg input{ width: 252px; margin-top: 20px;}
+.gender input { width: 182px;}
+.item input,.msg select{ width: 382px; display: inline; margin: 0 15px;}
+.item span{ display: inline; margin: 0 13px;}
+.item label,.msg label,.gender label{ width: 106px; text-align: right;}
+#schools .fl{ display: inline;}
+
+.formbox-left { border-right: 1px solid #C6C6C6;}
+
+
+
+.tree {background-color:#fbfbfb; border:1px solid #999;}
+.tree li {position:relative; margin: 20px 0;}
+.tree li:before, .tree li::after { content:''; left:-20px; position:absolute; right:auto}
+.tree li:before { border-left:1px solid #999; bottom:50px; height:100%; top:0; width:1px }
+.tree li:after { border-top:1px solid #999; height:20px; top:25px; width:25px}
+.tree li span { width: 216px; border:1px solid #999; border-radius:5px; display:inline-block; padding:3px; text-decoration:none}
+.tree>ul>li::before, .tree>ul>li::after { border:0}
+.tree li:last-child::before { height:30px}
+.tree li.parent_li>span:hover, .tree li.parent_li>span:hover+ul li span { background:#eee; border:1px solid #94a0b4; color:#000}
+
+
+.mianinfo{ margin-top: 20px;}
+.al{margin-top:10px;margin-bottom:10px;padding:0px;font-size:14px;color:#333333;line-height:24px;white-space:normal;}
+
+.article{padding:20px 40px;line-height:25px;}
+.article .articleTop{text-align:center;border-bottom:1px solid #DADADA;padding:20px auto;}
+.article .articleTop h3{line-height:30px;}
+.article .articleTop span{margin:10px;}
+
+/*.comments{padding-top:40px;border-top:1px solid #dadada;}*/
+.comments h3{ line-height:30px; font-weight:normal;}
+.comments form textarea{ display: inline; width: 994px;}
+.comments form input{ height: 76px; width: 90px; margin-top: -66px;}
+.comments form .item input { height: 30px; width: 196px; margin-left: 0;}
+.commentLists { margin-top: -226px;}
+.commentLists  ul  li{line-height:25px;padding:10px;border-top:1px dashed #dadada;}

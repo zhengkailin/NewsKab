@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.AnnouncementDao">
+
+
+    <select id="announcementList" resultType="Announcement">
+    select * from kab_announcement ORDER BY creationDate desc
+    </select>
+    <select id="announcementById" resultType="Announcement">
+        select * from kab_announcement where id =#{id}
+    </select>
+    <select id="countAnnouncement" resultType="Announcement">
+        select * from kab_announcement
+    </select>
+    <select id="listpage" resultType="Announcement">
+        select * from kab_announcement
+        LIMIT #{currentPageNo},#{rowCount}
+    </select>
+
+
+
+    <resultMap id="AnnouncementMap" type="Announcement">
+        <result column="id" property="id"></result>
+        <result column="title" property="title"></result>
+        <result column="createByName" property="createByName"></result>
+        <result column="creationDate" property="creationDate"></result>
+        <result column="content" property="content"></result>
+        <result column="announcementDate" property="announcementDate"></result>
+        <result column="announcementName" property="announcementName"></result>
+       <association property="announcementLevel" javaType="Announcement">
+           <result column="id" property="id"></result>
+           <result column="leveltype" property="leveltype"></result>
+       </association>
+    </resultMap>
+
+</mapper>

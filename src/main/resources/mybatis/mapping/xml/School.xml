@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.SchoolDao">
+
+
+    <select id="classTypelist" resultType="ClassType">
+    select * from kab_classtype
+    </select>
+
+    <select id="regionlist" resultType="Region">
+        select * from kab_region
+    </select>
+
+    <select id="querySchoolList" resultMap="classMap">
+      select * from kab_class as c,kab_classtype as ct where c.classtypeId=ct.id
+    </select>
+    <select id="schoollistById" resultType="School">
+        select * from kab_school where regionId=#{id}
+    </select>
+    <insert id="addClass">
+        insert into kab_class (id ,className,classtypeId,schoolId,status,userId) values(DEFAULT ,#{kabClassName},#{kabClassType.id},#{school.id},#{status},1)
+    </insert>
+
+    <insert id="addSchool">
+        insert into kab_school (id ,NAME,regionId) values(DEFAULT ,#{name},#{regionId})
+    </insert>
+
+    <resultMap id="schoolMap" type="School">
+        <result column="id" property="id"></result>
+        <result column="name" property="name"></result>
+        <association property="region" javaType="Region">
+            <result column="id" property="id"></result>
+            <result column="name" property="name"></result>
+        </association>
+    </resultMap>
+    
+
+
+
+
+
+
+</mapper>

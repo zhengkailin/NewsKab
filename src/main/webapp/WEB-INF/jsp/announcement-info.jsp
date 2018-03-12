@@ -1,0 +1,46 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>KAB创业教育网</title>
+    <link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/play.css"/>
+    <script src="/bootstrap-3.3.7-dist/js/jquery.min.js"></script>
+    <script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<%@include file="/comm/head.jsp"%>
+
+
+<div class="container headinfo">
+    <div class="banner">
+        <h3>KAB公告</h3>
+        <img src="/img/banner.gif" alt=""/>
+    </div>
+    <div class="locaiton"><a href="/indexlist">首页</a>&gt;&gt;<a href="/announcementlist">KAB公告</a>&gt;&gt;详细</div>
+</div>
+<div class="container article">
+    <div class="articleTop">
+        <h3>${announcement.title}</h3>
+        <span>${announcement.creationDate}</span>
+    </div>
+    <div class="m-leftmenv">
+        <div>
+            <p class="al">
+              ${announcement.content}
+            </p>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<%@include file="/comm/foot.jsp"%>
+
+</body>
+</html>

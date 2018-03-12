@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace="dao接口的路径"-->
+<mapper namespace="com.accp.dao.UserDao">
+    <resultMap id="User" type="User">
+        <result property="id" column="id"/>
+        <result property="userName" column="userName"/>
+        <result property="miMa" column="miMa"/>
+        <result property="realName" column="realName"/>
+        <result property="school" column="school"/>
+        <result property="post" column="post"/>
+        <result property="dept" column="dept"/>
+        <result property="teachTime" column="teachTime"/>
+        <result property="teachSubject" column="teachSubject"/>
+        <result property="birthday" column="birthday"/>
+        <result property="major" column="major"/>
+        <result property="idCard" column="idCard"/>
+        <result property="joinClassId" column="joinClassId"/>
+        <result property="education" column="education"/>
+        <result property="phone" column="phone"/>
+        <result property="tel" column="tel"/>
+        <result property="fax" column="fax"/>
+        <result property="email" column="email"/>
+        <result property="address" column="address"/>
+        <result property="securityQuestionId" column="securityQuestionId"/>
+        <result property="secretAnswerId" column="secretAnswerId"/>
+        <result property="managementExperience" column="managementExperience"/>
+        <result property="userTypeId" column="userTypeId"/>
+        <result property="auditStatus" column="auditStatus"/>
+        <result property="userRoot" column="userRoot"/>
+    </resultMap>
+
+    <select id="userById" resultType="User">
+        select * FROM kab_user where id =#{id}
+    </select>
+
+    <select id="list" resultMap="User">
+        SELECT * FROM kab_user
+        <where>
+            <if test="userName!=null and userName!=''">
+                userName=#{userName}
+            </if>
+            <if test="miMa!=null and miMa!=''">
+                AND miMa=#{miMa}
+            </if>
+            <if test="email!=null and email!=''">
+                AND email=#{email}
+            </if>
+            <if test="id>0">
+                AND id=#{id}
+            </if>
+        </where>
+    </select>
+
+    <!--<insert id="adds">-->
+        <!--INSERT INTO kab_user(id,userName.miMa,email) VALUES (DEFAULT,#{userName},#{miMa},#{email})-->
+    <!--</insert>-->
+
+    <insert id="add">
+        INSERT INTO kab_user
+        VALUES (DEFAULT,#{userName},#{miMa},DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,#{email},DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT)
+    </insert>
+
+    <select id="existsName" resultType="_int">
+        SELECT COUNT(1) FROM  kab_user WHERE username=#{username}
+    </select>
+
+    <update id="updateMa">
+    update kab_user
+    <set>
+    <if test="miMa!=null and miMa!=''">
+        miMa=#{miMa},
+    </if>
+    </set>
+        where id=#{id}
+    </update>
+
+
+    <update id="updateUser">
+        update kab_user
+        <set>
+            <if test="userName!=null and userName!=''">
+                userName=#{userName},
+            </if>
+            <if test="realName!=null and realName!=''">
+                realName=#{realName},
+            </if>
+            <if test="school>0">
+                school=#{school},
+            </if>
+            <if test="post!=null and post!=''">
+                post=#{post},
+            </if>
+            <if test="dept!=null and dept!=''">
+                dept=#{dept},
+            </if>
+            <if test="teachTime>0">
+                teachTime=#{teachTime},
+            </if>
+            <if test="teachSubject!=null and teachSubject!=''">
+                teachSubject=#{teachSubject},
+            </if>
+            <if test="birthday!=null">
+                birthday=#{birthday},
+            </if>
+            <if test="education!=null and education!=''">
+                education=#{education},
+            </if>
+            <if test="major!=null and major!=''">
+                major=#{major},
+            </if>
+            <if test="idCard!=null and idCard!=''">
+                idCard=#{idCard},
+            </if>
+            <if test="joinClassId>0">
+                joinClassId=#{joinClassId},
+            </if>
+            <if test="fax!=null and fax!=''">
+                fax=#{fax},
+            </if>
+            <if test="phone!=null and phone!=''">
+                phone=#{phone},
+            </if>
+            <if test="tel!=null and tel!=''">
+                tel=#{tel},
+            </if>
+            <if test="email!=null and email!=''">
+                email=#{email},
+            </if>
+            <if test="address!=null and address!=''">
+                address=#{address},
+            </if>
+            <if test="securityQuestionId>0">
+                securityQuestionId=#{securityQuestionId},
+            </if>
+            <if test="secretAnswerId!=null and secretAnswerId!=''">
+                secretAnswerId=#{secretAnswerId},
+            </if>
+            <if test="managementExperience!=null and managementExperience!=''">
+                managementExperience=#{managementExperience},
+            </if>
+            <if test="userTypeId>0">
+                userTypeId=#{userTypeId},
+            </if>
+            <if test="auditStatus>0">
+                auditStatus=#{auditStatus},
+            </if>
+            <if test="userRoot>0">
+                userRoot=#{userRoot},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <delete id="deleteUser">
+        delete from kab_user where id=#{id}
+    </delete>
+</mapper>

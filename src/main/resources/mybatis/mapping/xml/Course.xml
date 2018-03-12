@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.CourseDao">
+
+
+
+    <select id="listpage" resultType="Course">
+        select * from kab_course
+        LIMIT #{currentPageNo},#{rowCount}
+    </select>
+
+    <select id="countCourse" resultType="Course">
+        select * from kab_course
+    </select>
+    <select id="courseById" resultType="Course">
+        select * from kab_course where id =#{id}
+    </select>
+    <update id="modifyCourse">
+        update kab_course  set visitorCount=visitorCount+1 where id=#{id}
+    </update>
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.EntrepreneurshipDao">
+
+
+    <select id="entrepreneurshiplist" resultType="Entrepreneurship">
+    select * from kab_entrepreneurship
+    </select>
+
+    <select id="entrepreneurshiplById" resultType="Entrepreneurship">
+        select * from kab_entrepreneurship where id= #{id}
+    </select>
+    <select id="countEntrepreneurship" resultType="Entrepreneurship">
+        select * from kab_entrepreneurship
+
+    </select>
+    <select id="listpage" resultType="Entrepreneurship">
+        select * from kab_entrepreneurship
+        LIMIT #{currentPageNo},#{rowCount}
+    </select>
+    <update id="modifyEntrepreneurship">
+        update kab_entrepreneurship  set visitorCount=visitorCount+1 where id=#{id}
+    </update>
+
+</mapper>
